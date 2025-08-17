@@ -1,0 +1,50 @@
+# Python cache and bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+
+# Flask instance folder (contains config, uploads, etc.)
+instance/
+
+# Logs and debug
+*.log
+*.pot
+*.mo
+
+# SQLite database files
+*.db
+*.sqlite3
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# VS Code / IDE configs
+.vscode/
+.idea/
+
+# Node (if you add React frontend later)
+node_modules/
+dist/
+build/
+
+# Coverage / testing
+.coverage
+htmlcov/
+.tox/
+.pytest_cache/
+
+# Environments
+.env
+*.env
+

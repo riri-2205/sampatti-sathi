@@ -1,0 +1,186 @@
+[
+  {
+    "scheme_name": "Soil Health Card Scheme",
+    "overview_objectives": "Launched in 2015 by the Ministry of Agriculture & Farmers Welfare to provide farmers with crop-wise nutrient recommendations based on soil analysis. Goal: improve soil fertility and promote balanced fertilizer use.",
+    "benefits": [
+      "Farmer-specific soil health assessment.",
+      "Personalized nutrient/fertilizer advisory.",
+      "Reduced input costs, improved productivity.",
+      "Supports Integrated Nutrient Management practices."
+    ],
+    "eligibility_criteria": [
+      "All farmers owning or cultivating land in India.",
+      "Tenant farmers and sharecroppers involved in cultivation.",
+      "Farmers must submit soil samples through approved centres."
+    ],
+    "application_process": [
+      "Collect soil sample as per guidelines.",
+      "Submit to nearest Soil Testing Lab or collection centre.",
+      "Lab analyses soil sample.",
+      "Soil Health Card generated and delivered to farmer."
+    ],
+    "required_documents": [
+      "Aadhaar, voter ID, ration card.",
+      "Land records (ownership or tenancy proof)."
+    ],
+    "deadlines_timelines": "Continuous scheme; soil tested every 2 years.",
+    "official_references": [
+      "https://soilhealth.dac.gov.in/files/Implementation.pdf",
+      "https://soilhealth.dac.gov.in/files/portal/Guideline_SoilTestingLab_Project.pdf",
+      "https://soilhealth.dac.gov.in/files/portal/Recommended%20INM%20Packages%20-1.pdf"
+    ],
+    "faqs": [
+      {"q": "How often can farmers get soil tested?", "a": "Every 2 years."},
+      {"q": "Who pays for testing?", "a": "Government of India."},
+      {"q": "What does the card contain?", "a": "Soil nutrient test results and crop-wise fertilizer recommendations."}
+    ],
+    "eligibility_checkpoints": [
+      "Farmer cultivates land in India.",
+      "Soil sample submitted to recognized lab.",
+      "Farmer ID and land proof verified."
+    ]
+  },
+  {
+    "scheme_name": "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+    "overview_objectives": "Launched in 2016 to provide crop insurance coverage against natural calamities, pests, and diseases. Ensures farmer income stability.",
+    "benefits": [
+      "Covers risks across sowing, standing crop, and post-harvest stages.",
+      "Nominal farmer premium (e.g., 2% for food & oilseeds).",
+      "Rapid claim settlement using technology.",
+      "Government subsidizes remaining premium."
+    ],
+    "eligibility_criteria": [
+      "Farmers producing notified crops in specified areas.",
+      "Loanee farmers enrolled via lending banks.",
+      "Non-loanee farmers can enroll voluntarily.",
+      "Tenant farmers and sharecroppers eligible with proof.",
+      "Excludes non-notified crops/areas, late applications, incomplete docs."
+    ],
+    "application_process": [
+      "Check notified crops/areas via PMFBY portal.",
+      "Apply through bank, CSC, or online portal before deadline.",
+      "Pay premium if non-loanee.",
+      "Bank/portal uploads details; claims processed later."
+    ],
+    "required_documents": [
+      "Aadhaar card.",
+      "Land/tenancy proof.",
+      "Bank account details.",
+      "Crop declaration."
+    ],
+    "deadlines_timelines": "Kharif: 31 July; Rabi: 31 December (may vary by state).",
+    "official_references": [
+      "https://pmfby.gov.in/pdf/Revised_Operational_Guidelines.pdf",
+      "https://pmfby.gov.in/pdf/Revamped%20Operational%20Guidelines_17th%20August%202020.pdf",
+      "https://pmfby.gov.in/pdf/New%20Schemes-english_.pdf"
+    ],
+    "faqs": [
+      {"q": "Is PMFBY mandatory?", "a": "No, voluntary since 2020."},
+      {"q": "What risks are covered?", "a": "Prevented sowing, yield losses, localized calamities."},
+      {"q": "Are tenant farmers included?", "a": "Yes, with valid proof."}
+    ],
+    "eligibility_checkpoints": [
+      "Grows notified crop in notified area.",
+      "Application before cut-off date.",
+      "Aadhaar and bank account linked.",
+      "Premium paid when required."
+    ]
+  },
+  {
+    "scheme_name": "Pradhan Mantri Kisan Samman Nidhi (PM-Kisan)",
+    "overview_objectives": "Operational since Dec 2018. Provides income support of ₹6,000 annually to landholding farmer families through DBT.",
+    "benefits": [
+      "₹6,000/year in three installments.",
+      "Funds transferred directly to bank account.",
+      "Nationwide coverage."
+    ],
+    "eligibility_criteria": [
+      "Landholding farmer family with cultivable land.",
+      "Excludes institutional landholders.",
+      "Excludes government employees (except Group D), pensioners above threshold, and income-tax payers."
+    ],
+    "application_process": [
+      "Apply via CSC, state agriculture office, or online portal.",
+      "Submit Aadhaar, land records, bank details, mobile number.",
+      "State verifies and uploads beneficiary data.",
+      "Funds transferred via PFMS."
+    ],
+    "required_documents": [
+      "Aadhaar card.",
+      "Land ownership records.",
+      "Bank account details.",
+      "Mobile number."
+    ],
+    "deadlines_timelines": "Continuous registration; installments: Apr–Jul, Aug–Nov, Dec–Mar.",
+    "official_references": [
+      "https://fw.pmkisan.gov.in/Documents/Revised%20Operational%20Guidelines%20-%20PM-Kisan%20Scheme.pdf",
+      "https://fw.pmkisan.gov.in/Documents/OPERATIONAL%20GUIDELINES.pdf",
+      "https://fw.pmkisan.gov.in/Documents/ClarificationsrelatingtoClauses.PDF"
+    ],
+    "faqs": [
+      {"q": "Are tenant farmers eligible?", "a": "No, only landholders qualify."},
+      {"q": "How much support is given?", "a": "₹6,000 per year."},
+      {"q": "Is Aadhaar mandatory?", "a": "Yes, for installments beyond the first."}
+    ],
+    "eligibility_checkpoints": [
+      "Owns cultivable land.",
+      "Not in exclusion list.",
+      "Aadhaar linked with bank account.",
+      "Land records certified."
+    ]
+  },
+  {
+    "scheme_name": "Kisan Credit Card (KCC)",
+    "overview_objectives": "Introduced in 1998 to provide timely and adequate short-term credit to farmers for crop production, allied activities, and household needs.",
+    "benefits": [
+      "Flexible revolving credit facility.",
+      "Interest subvention up to 2% and prompt repayment incentive up to 3%.",
+      "Coverage extended to fisheries, dairy, and allied activities.",
+      "Insurance cover with RuPay Kisan Card.",
+      "Simplified documentation for small loans."
+    ],
+    "eligibility_criteria": [
+      "Owner cultivators, tenant farmers, sharecroppers.",
+      "Joint Liability Groups or Self-Help Groups of farmers.",
+      "Fisheries and animal husbandry farmers.",
+      "Age 18–75 (with co-borrower if above 60).",
+      "Excludes willful loan defaulters."
+    ],
+    "application_process": [
+      "Obtain KCC form from bank or download.",
+      "Fill details of landholding, crops, credit needs.",
+      "Submit with required documents to bank.",
+      "Bank verifies land records and credit history.",
+      "Sanction limit based on scale of finance and cropping pattern.",
+      "KCC card issued (physical or RuPay)."
+    ],
+    "required_documents": [
+      "Aadhaar, PAN, voter ID (any identity proof).",
+      "Address proof (ration card, utility bill).",
+      "Land ownership/tenancy proof.",
+      "Bank account details.",
+      "Photographs.",
+      "For fisheries/animal husbandry: activity proof."
+    ],
+    "deadlines_timelines": "Open-ended scheme; loans generally valid up to 5 years with periodic review.",
+    "official_references": [
+      "https://rbi.org.in/Scripts/BS_ViewMasCirculardetails.aspx?id=12375",
+      "https://www.nabard.org/auth/writereaddata/tender/2704215958Kisan-Credit-Card.pdf",
+      "https://pmfby.gov.in/faq",
+      "https://agricoop.nic.in/en/KisanCreditCard"
+    ],
+    "faqs": [
+      {"q": "What is max loan under KCC?", "a": "Up to ₹3 lakh (may vary)."},
+      {"q": "Does it cover allied activities?", "a": "Yes, dairy, poultry, fisheries, etc."},
+      {"q": "Is collateral required?", "a": "No, up to ₹1.6 lakh; above that as per RBI norms."},
+      {"q": "Is insurance included?", "a": "Yes, accident cover with RuPay Kisan Card."}
+    ],
+    "eligibility_checkpoints": [
+      "Farmer (owner/tenant/sharecropper) or allied activity farmer.",
+      "Age 18–75.",
+      "Not a willful defaulter.",
+      "Land/occupation proof provided.",
+      "Aadhaar linked with bank account."
+    ]
+  }
+]
