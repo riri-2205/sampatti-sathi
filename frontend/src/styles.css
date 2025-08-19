@@ -1,0 +1,94 @@
+/* src/styles.css */
+.app-container {
+  min-height: 100vh;
+  background-color: #b0e0e6; /* Powder Blue */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(135, 206, 235, 0.2); /* Soft shadow with sky blue tint */
+  padding: 20px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #87ceeb; /* Sky Blue */
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #add8e6; /* Light Blue */
+  margin-bottom: 20px;
+}
+
+.mic-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #87ceeb; /* Sky Blue */
+  border: none;
+  font-size: 2.5rem; /* Larger mic icon */
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.mic-button.recording {
+  background-color: #ff4444; /* Red when recording */
+}
+
+.mic-button:hover:not(.recording) {
+  background-color: #add8e6; /* Light Blue on hover */
+}
+
+.status {
+  font-size: 1rem;
+  color: #add8e6; /* Light Blue */
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.response {
+  margin-top: 20px;
+}
+
+.response p {
+  font-size: 1rem;
+  color: #87ceeb; /* Sky Blue */
+}
+
+.audio-player {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .card {
+    padding: 15px;
+    max-width: 90%;
+  }
+
+  .mic-button {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+}

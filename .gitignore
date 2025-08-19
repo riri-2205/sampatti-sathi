@@ -48,3 +48,4 @@ htmlcov/
 .env
 *.env
 
+flask_session/
