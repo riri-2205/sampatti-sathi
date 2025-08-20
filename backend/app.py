@@ -1,7 +1,9 @@
+import os
+import io
+import base64
 from flask import Flask, request, jsonify, session
 from flask_cors import CORS
 from flask_session import Session
-import os
 import openai
 from openai import OpenAI
 from langchain_openai import OpenAIEmbeddings
@@ -14,8 +16,6 @@ from langchain.prompts import PromptTemplate
 from langchain.memory import ConversationBufferMemory
 from dotenv import load_dotenv
 import langdetect
-import base64
-import io
 
 # Load environment variables
 load_dotenv()
@@ -38,7 +38,7 @@ def init_rag():
             text_content=False
         )
         docs = loader.load()
-        text_splitter = CharacterTextSplitter(chunk_size=500, chunk_overlap=50)  # Better context retention
+        text_splitter = CharacterTextSplitter(chunk_size=500, chunk_overlap=50)
         texts = text_splitter.split_documents(docs)
         embeddings = OpenAIEmbeddings()
         if not os.path.exists('vector_db/index.faiss'):
@@ -52,7 +52,7 @@ def init_rag():
         raise
 
 vectorstore = init_rag()
-llm = ChatOpenAI(model_name="gpt-4o", temperature=0.7)  # Conversational flexibility
+llm = ChatOpenAI(model_name="gpt-4o", temperature=0.7)
 
 # Define a custom prompt for the conversational chain
 prompt_template = """You are a proactive, friendly conversational agent assisting farmers in finding eligible government schemes in English, Hindi, Tamil, or Kannada. Follow these steps:
@@ -74,32 +74,20 @@ prompt = PromptTemplate(
     template=prompt_template
 )
 
-# Set up ConversationalRetrievalChain with memory
-memory = ConversationBufferMemory(
-    memory_key="chat_history",
-    return_messages=True,
-    session_id="farmer_chat"  # Unique session ID
-)
-qa_chain = ConversationalRetrievalChain.from_llm(
-    llm=llm,
-    retriever=vectorstore.as_retriever(search_kwargs={"k": 3}),  # Top 3 relevant docs
-    memory=memory,
-    combine_docs_chain_kwargs={"prompt": prompt},
-    verbose=True  # For debugging
-)
+def get_session_id():
+    # This will only be called within a request context
+    return session.get('session_id', os.urandom(16).hex())
 
 def detect_language(text):
     try:
         detected_lang = langdetect.detect(text)
-        # Restrict to English, Hindi, Tamil, Kannada
         language_map = {'en': 'en', 'hi': 'hi', 'ta': 'ta', 'kn': 'kn'}
-        return language_map.get(detected_lang, 'en')  # Default to English if unsupported
+        return language_map.get(detected_lang, 'en')
     except:
-        return 'en'  # Fallback to English on error
+        return 'en'
 
 def translate_text(text, target_lang='en'):
     try:
-        # Restrict translation to supported languages
         supported_langs = {'en', 'hi', 'ta', 'kn'}
         if target_lang not in supported_langs:
             target_lang = 'en'
@@ -110,7 +98,7 @@ def translate_text(text, target_lang='en'):
         return response.choices[0].message.content
     except Exception as e:
         print(f"Translation error: {str(e)}")
-        return text  # Return original text on failure
+        return text
 
 @app.route('/process_audio', methods=['POST'])
 def process_audio():
@@ -119,48 +107,75 @@ def process_audio():
             return jsonify({'text': 'No audio file provided.', 'audio': ''}), 400
 
         audio_data = request.files['audio'].read()
-        language = request.form.get('language', 'auto')
+        if len(audio_data) > 5 * 1024 * 1024:  # 5MB limit
+            return jsonify({'text': 'Audio file too large. Keep it under 5MB.', 'audio': ''}), 400
 
-        # STT with OpenAI Whisper
+        language = request.form.get('language', 'auto')
         audio_file = io.BytesIO(audio_data)
         audio_file.name = "audio.webm"
+
+        # Initialize memory and chain within request context
+        memory = ConversationBufferMemory(
+            memory_key="chat_history",
+            return_messages=True,
+            session_id=get_session_id()
+        )
+        qa_chain = ConversationalRetrievalChain.from_llm(
+            llm=llm,
+            retriever=vectorstore.as_retriever(search_kwargs={"k": 3}),
+            memory=memory,
+            combine_docs_chain_kwargs={"prompt": prompt},
+            verbose=True
+        )
+
         try:
-            with audio_file:
-                transcript_response = client.audio.transcriptions.create(
-                    model="whisper-1",
-                    file=audio_file,
-                    timeout=30
-                )
+            print("Starting transcription...")
+            transcript_response = client.audio.transcriptions.create(
+                model="whisper-1",
+                file=audio_file,
+                timeout=30
+            )
             transcript = transcript_response.text
-        except openai.InternalServerError as e:
-            return jsonify({'text': 'Sorry, there was an issue processing your audio. Please try again later.', 'audio': ''}), 500
+            print(f"Transcription success: {transcript}")
+        except openai.RateLimitError as e:
+            print(f"Rate limit error: {str(e)}")
+            return jsonify({'text': 'Rate limit exceeded. Please try again later.', 'audio': ''}), 429
+        except openai.APIError as e:
+            print(f"API error: {str(e)}")
+            return jsonify({'text': 'API issue. Please try again later.', 'audio': ''}), 500
         except Exception as e:
+            print(f"Transcription error: {str(e)}")
             return jsonify({'text': f'Error transcribing audio: {str(e)}', 'audio': ''}), 500
 
         detected_lang = detect_language(transcript)
-
-        # Translate to English for processing if needed (only supported languages)
         if detected_lang != 'en':
+            print(f"Translating from {detected_lang} to en")
             transcript_en = translate_text(transcript, 'en')
         else:
             transcript_en = transcript
 
-        # AI Reasoning with Conversational RAG
+        print(f"Processing query: {transcript_en}")
         result = qa_chain({"question": transcript_en})
         response_text_en = result['answer']
+        print(f"Response in English: {response_text_en}")
 
-        # Translate back to detected language (only supported)
         response_text = translate_text(response_text_en, detected_lang)
+        print(f"Response in {detected_lang}: {response_text}")
 
-        # TTS with OpenAI
         try:
+            print("Starting TTS...")
             tts_response = client.audio.speech.create(
                 model="tts-1",
                 voice="alloy",
                 input=response_text
             )
             audio_bytes = tts_response.content
+            print("TTS success")
+        except openai.APIError as e:
+            print(f"TTS API error: {str(e)}")
+            return jsonify({'text': 'TTS API issue. Please try again.', 'audio': ''}), 500
         except Exception as e:
+            print(f"TTS error: {str(e)}")
             return jsonify({'text': f'Error generating audio: {str(e)}', 'audio': ''}), 500
 
         audio_base64 = base64.b64encode(audio_bytes).decode('utf-8')

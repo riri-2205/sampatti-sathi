@@ -1,11 +1,13 @@
 /* src/styles.css */
 .app-container {
-  min-height: 100vh;
-  background-color: #b0e0e6; /* Powder Blue */
+  min-height: 92vh;
+  max-height: 92vh;
+  background-color: #45a049;  /* Powder Blue */
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
+  font-family: "Roboto", sans-serif;
 }
 
 .card {
@@ -13,21 +15,28 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(135, 206, 235, 0.2); /* Soft shadow with sky blue tint */
   padding: 20px;
-  max-width: 400px;
-  width: 100%;
+  max-width: 50%;
+  min-width: 400px;
   text-align: center;
 }
 
 .title {
   font-size: 2rem;
   font-weight: bold;
-  color: #87ceeb; /* Sky Blue */
+  color: #006805;/* Sky Blue */
   margin-bottom: 10px;
 }
 
 .subtitle {
   font-size: 1rem;
-  color: #add8e6; /* Light Blue */
+  color: #006805; /* Light Blue */
+  margin-bottom: 20px;
+}
+
+.mic-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 20px;
 }
 
@@ -38,7 +47,7 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background-color: #87ceeb; /* Sky Blue */
+  background-color: #4CAF50; /* Green */
   border: none;
   font-size: 2.5rem; /* Larger mic icon */
   color: white;
@@ -51,12 +60,12 @@
 }
 
 .mic-button:hover:not(.recording) {
-  background-color: #add8e6; /* Light Blue on hover */
+  background-color: #006805; /* Darker Green on hover */
 }
 
 .status {
   font-size: 1rem;
-  color: #add8e6; /* Light Blue */
+  color: #006805;  /* Light Blue */
   margin-top: 10px;
   margin-bottom: 20px;
 }
@@ -67,7 +76,7 @@
 
 .response p {
   font-size: 1rem;
-  color: #87ceeb; /* Sky Blue */
+  color: #006805; /* Sky Blue */
 }
 
 .audio-player {

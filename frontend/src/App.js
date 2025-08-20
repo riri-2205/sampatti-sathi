@@ -56,13 +56,15 @@ function App() {
       <div className="card">
         <h1 className="title">Sampatti Sathi</h1>
         <p className="subtitle">Speak to find government schemes!</p>
-        <button
-          onClick={recording ? stopRecording : startRecording}
-          className={`mic-button ${recording ? 'recording' : ''}`}
-          aria-label={recording ? 'Stop Recording' : 'Start Recording'}
-        >
-          <BsMicFill />
-        </button>
+        <div className="mic-container">
+          <button
+            onClick={recording ? stopRecording : startRecording}
+            className={`mic-button ${recording ? 'recording' : ''}`}
+            aria-label={recording ? 'Stop Recording' : 'Start Recording'}
+          >
+            <BsMicFill />
+          </button>
+        </div>
         <p className="status">{recording ? 'Recording...' : 'Click mic to start'}</p>
         <div className="response">
           <p><strong>Response:</strong> {responseText || 'Speak to get assistance.'}</p>
